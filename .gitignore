@@ -2,6 +2,8 @@
 solutions/
 
 
+mitvenv/
+
 # Some Results
 results/buffon_needle.gif
 .ipynbcheckpoints
