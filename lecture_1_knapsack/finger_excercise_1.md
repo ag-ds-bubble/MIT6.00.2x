@@ -6,7 +6,6 @@
 - Problem Set - Weight: 0, Value: -10
 
 ### This time, she can only carry a weight of 14, and wishes to maximize the value to weight ratio of the things she carries. She employs three different metrics in an attempt to do this, and writes an algorithm in Python to determine which loot to take.
-
 ### The algorithm works as follows:
 ### Evaluate the metric of each item. Each metric returns a numerical value for each item.
 ### For each item, from highest metric value to lowest, add the item if there is room in the bag.
