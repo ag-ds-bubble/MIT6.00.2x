@@ -54,4 +54,4 @@ def test_greedys(max_cals):
     greedy(food_menu, max_cals, lambda x : x.getDensity(), 'By Density')
     
 
-test_greedys(1000)
+test_greedys(750)
