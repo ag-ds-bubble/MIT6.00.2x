@@ -27,7 +27,7 @@ def pprint_foodm(fmlist):
 zippack = zip(['Wine', 'Beer', 'Pizza', 'Burger', 'Fries', 'Coke', 'Apple', 'Donut'],
               [89, 90, 30, 50, 90, 79, 90, 10],
               [123, 154, 258, 354, 365, 150, 95, 195])
-food_menu = [Food(n,v,c) for n,v,c in zippack]
+food_menu = [Food(n,v,c) for n,v,c in zippack]*10
 # pprint_foodm(food_menu)
 
 def greedy(items, maxCost, keyFunction, keyFuncName):
