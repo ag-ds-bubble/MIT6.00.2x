@@ -1,15 +1,152 @@
-## For questions 1 and 2, consider our previous problem (permutations of 3 students in a line).
+### Consider our representation of permutations of students in a line from Exercise 1. (The teacher only swaps the positions of two students that are next to each other in line.) Let's consider a line of three students, Alice, Bob, and Carol (denoted A, B, and C). Using the Graph class created in the lecture, we can create a graph with the design chosen in Exercise 1: vertices represent permutations of the students in line; edges connect two permutations if one can be made into the other by swapping two adjacent students.
 
-### Q1) When represented as a tree, each node will have how many children?
-> **2**
+### We construct our graph by first adding the following nodes.
+### Add the appropriate edges to the graph.
 
-### Q2) Given two permutations, what is the maximum number of swaps it will take to reach one from the other?
-> **3**
+```py
+import networkx as nx
+import matplotlib.pyplot as plt
+import pandas as pd
 
-## For questions 3 and 4, consider the general case of our previous problem (permutations of n students in a line). Give your answer in terms of n.
+class Node:
+    def __init__(self, name):
+        self.name = name
+    
+    def getName(self):
+        return self.name
+    
+    def __str__(self):
+        return self.name
 
-### Q3) When represented as a tree, each node will have how many children?
-> **n-1**
+class Edge:
+    def __init__(self, src, dest):
+        self.src = src
+        self.dest = dest
 
-### Q4) Given two permutations, what is the maximum number of swaps it will take to reach one from the other?
-> **0.5*n(n-1)**
+    def getSource(self):
+        return self.src
+
+    def getDestination(self):
+        return self.dest
+
+    def __str__(self):
+        return self.src.getName()+'->'+self.dest.getName()
+
+class Digraph(object):
+    def __init__(self):
+        self.edges = {}
+
+    def __str__(self):
+        self.mapDF = pd.DataFrame(columns=['source','target'])
+        idx = 0
+        for esrc in self.edges:
+            for edst in self.edges[esrc]:
+                self.mapDF.loc[idx, 'source'] = esrc.getName()
+                self.mapDF.loc[idx, 'target'] = edst.getName()
+                idx+=1
+
+        G=nx.from_pandas_edgelist(self.mapDF)
+        nx.draw_networkx(G, with_labels=True, arrows = True, arrowstyle = '>')
+        plt.grid()
+        plt.show()
+
+        return 'Digraph'
+    
+    def __repr__(self):
+        return 'Digraph'
+
+    def addNode(self, node):
+        if node in self.edges:
+            raise ValueError("Duplicate Node")
+        else:
+            self.edges[node] = []
+
+    def addEdge(self, edge):
+        src = edge.getSource()
+        dst = edge.getDestination()
+        if not (src in self.edges and dst in self.edges):
+            raise ValueError("Node not in the Graph")
+        self.edges[src].append(dst)
+
+    def childrenOf(self, node):
+        return self.edges[node]
+
+    def hasNode(self, node):
+        return node in self.edges
+
+    def getNode(self, name):
+        for n in self.edges:
+            if n.getName() == name:
+                return n
+        return NameError(name)
+
+
+class Graph(Digraph):
+    def addEdge(self, edge):
+        Digraph.addEdge(self, edge)
+        rev = Edge(edge.getDestination(), edge.getSource())
+        Digraph.addEdge(self, rev)
+
+    def __str__(self):
+        self.mapDF = pd.DataFrame(columns=['source','target'])
+        idx = 0
+        for esrc in self.edges:
+            for edst in self.edges[esrc]:
+                self.mapDF.loc[idx, 'source'] = esrc.getName()
+                self.mapDF.loc[idx, 'target'] = edst.getName()
+                idx+=1
+        G=nx.from_pandas_edgelist(self.mapDF)
+        nx.draw_networkx(G, with_labels=True)
+        plt.grid()
+        plt.show()
+        return 'UndirectedGraph'
+
+    def __repr__(self):
+        return 'UndirectedGraph'
+
+
+def buildLine(GraphType):
+    g = GraphType()
+    # Add Nodes
+    for perms in ['ABC', 'ACB', 'BAC', 'BCA', 'CAB', 'CBA']:
+        g.addNode(Node(perms))
+
+    # Add Edges
+    if GraphType().__repr__() == 'Digraph':
+        g.addEdge(Edge(g.getNode('ABC'), g.getNode('ACB')))
+        g.addEdge(Edge(g.getNode('ABC'), g.getNode('BAC')))
+
+        g.addEdge(Edge(g.getNode('ACB'), g.getNode('ABC')))
+        g.addEdge(Edge(g.getNode('ACB'), g.getNode('CAB')))
+
+        g.addEdge(Edge(g.getNode('BAC'), g.getNode('BCA')))
+        g.addEdge(Edge(g.getNode('BAC'), g.getNode('ABC')))
+
+        g.addEdge(Edge(g.getNode('BCA'), g.getNode('CBA')))
+        g.addEdge(Edge(g.getNode('BCA'), g.getNode('BAC')))
+        
+        g.addEdge(Edge(g.getNode('CAB'), g.getNode('ACB')))
+        g.addEdge(Edge(g.getNode('CAB'), g.getNode('CBA')))
+        
+        g.addEdge(Edge(g.getNode('CBA'), g.getNode('CAB')))
+        g.addEdge(Edge(g.getNode('CBA'), g.getNode('BCA')))
+
+    elif GraphType().__repr__() == 'UndirectedGraph':
+        g.addEdge(Edge(g.getNode('ABC'), g.getNode('ACB')))
+        g.addEdge(Edge(g.getNode('ABC'), g.getNode('BAC')))
+
+        g.addEdge(Edge(g.getNode('ACB'), g.getNode('CAB')))
+
+        g.addEdge(Edge(g.getNode('BAC'), g.getNode('BCA')))
+
+        g.addEdge(Edge(g.getNode('CBA'), g.getNode('CAB')))
+        g.addEdge(Edge(g.getNode('CBA'), g.getNode('BCA')))
+
+    return g
+
+
+dg = buildLine(Digraph)
+print(dg)
+dg = buildLine(Graph)
+print(dg)
+```

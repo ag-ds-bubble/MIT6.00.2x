@@ -162,10 +162,7 @@ def BFS(graph, start, end, toPrint=True):
     initPath = [start]
     pathQueue = [initPath]
     while len(pathQueue) != 0:
-        print(pathQueue)
         tmpPath = pathQueue.pop(0)
-        print(tmpPath)
-        print(pathQueue)
         if toPrint:
             print('Current BFS path :', printBFS(tmpPath))
         lastNode = tmpPath[-1]
@@ -175,8 +172,6 @@ def BFS(graph, start, end, toPrint=True):
             if nextNode not in tmpPath: # Check if its already in the path
                 newPath = tmpPath+[nextNode]
                 pathQueue.append(newPath)
-        print(pathQueue)
-        print()
     return None
 
 

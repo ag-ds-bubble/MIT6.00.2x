@@ -1,25 +1,39 @@
-## Challenge Problem! This problem is difficult and may stump you, but we include it because it is very interesting, especially for those who are more mathematically inclined. Don't worry if you can't get all the math behind it, and don't get discouraged. Remember that you do not lose points for trying a problem multiple times, nor do you lose points if you hit "Show Answer". If this problem has you stumped after you've tried it, feel free to reveal the solution and read our explanations.
+## Consider our continuing problem of permutations of three students in a line. Use the enumeration we established when adding the nodes to our graph. That is,
 
-### In the following examples, assume all graphs are undirected. That is, an edge from A to B is the same as an edge from B to A and counts as exactly one edge.
+```
+nodes = []
+nodes.append(Node("ABC")) # nodes[0]
+nodes.append(Node("ACB")) # nodes[1]
+nodes.append(Node("BAC")) # nodes[2]
+nodes.append(Node("BCA")) # nodes[3]
+nodes.append(Node("CAB")) # nodes[4]
+nodes.append(Node("CBA")) # nodes[5]
+```
 
-### A clique is an unweighted graph where each node connects to all other nodes. We denote the clique with  n  nodes as KN. Answer the following questions in terms of  n .
+so that ABC is Node 0, BCA is Node 3, etc.
 
-### Q1) How many edges are in KN?
+### Q1) Using Depth First Search, and beginning at the listed source nodes, give the first path found to the listed destination nodes. For the purpose of this exercise, assume DFS prioritizes lower numbered nodes. For example, if Node 2 is connected to Nodes 3 and 4, the first path checked will be 23. Additionally, DFS will never return to a node already in its path.
 
-> **n(n-1)/2**
+To denote a path, simply list the numbers of the nodes exactly as done in the lecture.
 
-### Q2) Consider the new version of DFS. This traverses paths until all non-circular paths from the source to the destination have been found, and returns the shortest one. Let A be the source node, and B be the destination in KN. How many paths of length 2 exist from A to B?
+Source: 0 -> Destination: 4
+> **014**
 
-> ****
+Source: 4 -> Destination: 1
+> **41**
 
- 
-### Q3) How many paths of length 3 exist from A to B?
- 
-### Q4) Continuing the logic used above, calculate the number of paths of length  m  from A to B, where  1≤m≤(n−1) , and write this number as a ratio of factorials. To indicate a factorial, please enter fact(n) to mean  n! ; fact(n+2) to mean  (n+2)! , etc. The 'logic above' from the last part of the problem.Click to see the solution for the previous problem, if you want some guidence on how to think about this problem part
+Source: 1 -> Destination: 1
+> **1**
 
-> ****
- 
-### Q5) Using the fact that for any n,  10!+11!+12!+...+1n!≤efor alln , where  e  is some constant, determine the asymptotic bound on the number of paths explored by DFS. For simplicity, write  O(n)  as just n,  O(n2)  as n^2, etc.
+Source: 2 -> Destination: 4
+> **2014**
 
-> ****
- 
+Source: 2 -> Destination: 3
+> **201453**
+
+Source: 3 -> Destination: 1
+> **3201**
+
+### Q2) We saw before that for permutations of 3 people in line, any two nodes are at most three edges, or four nodes, away. But DFS has yielded paths longer than three edges! In this graph, given a random source and a random destination, what is the probability of DFS finding a path of the shortest possible length?
+
+>**2/3**
