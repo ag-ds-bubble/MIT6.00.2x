@@ -74,7 +74,6 @@ class Digraph(object):
                 return n
         return NameError(name)
 
-
 class Graph(Digraph):
     def addEdge(self, edge):
         Digraph.addEdge(self, edge)
@@ -97,7 +96,6 @@ class Graph(Digraph):
 
     def __repr__(self):
         return 'UndirectedGraph'
-
 
 def buildLine(GraphType):
     g = GraphType()
