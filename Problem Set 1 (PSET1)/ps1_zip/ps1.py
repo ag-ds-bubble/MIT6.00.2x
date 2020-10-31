@@ -1,8 +1,11 @@
+
 ###########################
 # 6.00.2x Problem Set 1: Space Cows 
 
 from ps1_partition import get_partitions
 import time
+import operator
+from pprint import pprint
 
 #================================
 # Part A: Transporting Space Cows
@@ -32,6 +35,9 @@ def load_cows(filename):
 
 
 # Problem 1
+def next_most_heavy(cows):
+    return max(cows.copy().items(), key=operator.itemgetter(1))
+
 def greedy_cow_transport(cows,limit=10):
     """
     Uses a greedy heuristic to determine an allocation of cows that attempts to
@@ -54,9 +60,24 @@ def greedy_cow_transport(cows,limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
-    pass
-
+    tempCowDict = cows.copy()
+    cowDict = cows.copy()
+    trips = [[]]
+    tripweight=0
+    while len(cowDict) != 0:
+        nextCow, nextCowWeight = next_most_heavy(cowDict)
+        if tripweight+nextCowWeight<=limit:
+            trips[-1].append(nextCow)
+            tripweight += nextCowWeight
+            del tempCowDict[nextCow]
+        del cowDict[nextCow]
+        if not cowDict:
+            cowDict = tempCowDict.copy()
+            tripweight = 0
+            if tempCowDict!= {}:
+                trips.append([])
+    return trips
+    
 
 # Problem 2
 def brute_force_cow_transport(cows,limit=10):
@@ -79,12 +100,18 @@ def brute_force_cow_transport(cows,limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
-    pass
-
+    cowDict = cows.copy()
+    all_partitions = list(get_partitions(cows.keys()))
+    shortest_trips = 9999999
+    shortest_trip = []
+    for epart in all_partitions:
+        if all(sum(cowDict[k] for k in etrip)<=limit for etrip in epart) and len(epart)<shortest_trips:
+            shortest_trip = epart
+            shortest_trips = len(epart)
+    return shortest_trip
         
 # Problem 3
-def compare_cow_transport_algorithms():
+def compare_cow_transport_algorithms(cows, limit):
     """
     Using the data from ps1_cow_data.txt and the specified weight limit, run your
     greedy_cow_transport and brute_force_cow_transport functions here. Use the
@@ -97,8 +124,16 @@ def compare_cow_transport_algorithms():
     Returns:
     Does not return anything.
     """
-    # TODO: Your code here
-    pass
+    
+    ts = time.perf_counter_ns()
+    gct = greedy_cow_transport(cows, limit)
+    print('GCT :->', gct)
+    print(f'Time Taken by Greedy Algo : {round((time.perf_counter_ns()-ts)/1e9,3)} sec')
+
+    ts = time.perf_counter_ns()
+    bft = brute_force_cow_transport(cows, limit)
+    print('BFT :->', bft)
+    print(f'Time Taken by Brute Force Algo : {round((time.perf_counter_ns()-ts)/1e9,3)} sec')
 
 
 """
@@ -108,10 +143,11 @@ lines to print the result of your problem.
 """
 
 cows = load_cows("ps1_cow_data.txt")
-limit=100
-print(cows)
+limit=10
 
-print(greedy_cow_transport(cows, limit))
-print(brute_force_cow_transport(cows, limit))
+# print(greedy_cow_transport(cows, limit))
+# print(brute_force_cow_transport(cows, limit))
+
+compare_cow_transport_algorithms(cows, 10)
 
 
