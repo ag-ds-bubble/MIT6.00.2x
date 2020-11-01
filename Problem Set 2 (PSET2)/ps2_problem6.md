@@ -19,7 +19,7 @@
 ### Q6.1.1) Percentage Of Room That A Robot Cleans?
 - [ ] Time It Takes 1 - 10 Robots To Clean 70% Of A Room
 - [ ] Percentage Of Room That 1 - 10 Robots Clean
-- [ ] Time It Takes 1 - 10 Robots To Clean 80% Of A Room
+- [x] Time It Takes 1 - 10 Robots To Clean 80% Of A Room
 - [ ] Time For Robots To Clean Varying Percentages Of A Room
 - [ ] Area Of Room That 1 - 10 Robots Clean
 
@@ -29,12 +29,12 @@
 - [ ] Time-steps
 - [ ] Percentage Cleaned
 - [ ] Aspect Ratio
-- [ ] Number of Robots
+- [x] Number of Robots
 - [ ] Distance Travelled
 
 ### Q6.1.3) Which of the following would be the best y-axis label for the graph?
 
-- [ ] Time-steps
+- [x] Time-steps
 - [ ] Percentage Cleaned
 - [ ] Aspect Ratio
 - [ ] Number of Robots
@@ -48,7 +48,7 @@
 
 - [ ] Percentage Of Room That A Robot Cleans
 - [ ] Time It Takes Two Robots To Clean 80% Of Variously Sized Rooms
-- [ ] Time It Takes Two Robots To Clean 80% Of Variously Shaped Rooms
+- [x] Time It Takes Two Robots To Clean 80% Of Variously Shaped Rooms
 - [ ] Time It Takes 1 - 10 Robots To Clean 80% Of A Room
 - [ ] Percentage Of Variously Sized Rooms That A Robot Cleans
 - [ ] Percentage Of Variously Shaped Rooms That A Robot Cleans
@@ -59,13 +59,13 @@
 
 - [ ] Time-steps
 - [ ] Percentage Cleaned
-- [ ] Aspect Ratio
+- [x] Aspect Ratio
 - [ ] Number of Robots
 - [ ] Distance Travelled
 
 ### Q6.2.3) Which of the following would be the best y-axis label for the graph?
 
-- [ ] Time-steps
+- [x] Time-steps
 - [ ] Percentage Cleaned
 - [ ] Aspect Ratio
 - [ ] Number of Robots
