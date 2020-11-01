@@ -39,5 +39,5 @@ return random.choice(directionList)
 ```
 - [ ] Option A)
 - [ ] Option B)
-- [ ] Option C)
+- [x] Option C)
 - [ ] Option D)

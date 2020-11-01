@@ -25,7 +25,7 @@ random.seed(9001)
 for i in range(random.randint(1, 10)):
     print(random.randint(1, 10))
 ```
->****
+>**3**
 
 ```py 
 random.seed(9001)
@@ -33,7 +33,7 @@ d = random.randint(1, 10)
 for i in range(random.randint(1, 10)):
     print(d)
 ```
->****
+>**1,1,1**
 
 ```py
 random.seed(9001)
@@ -46,4 +46,4 @@ for i in range(random.randint(1, 10)):
         d = random.randint(1, 10)
         print(random.randint(1, 10))
 ```
->****
+>**1,1,3**
