@@ -1,4 +1,4 @@
-## Finger Excercise 2s
+## Finger Excercise 2
 
 ### Q1) Which of the following populations has the largest variance?
 
