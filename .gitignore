@@ -1,5 +1,10 @@
 .vscode/
 solutions/
+solutions2/
+
+.pdf
+*.pdf
+**.pdf
 
 
 mitvenv/
@@ -7,3 +12,5 @@ mitvenv/
 # Some Results
 Results/buffon_needle.gif
 .ipynbcheckpoints
+
+# https://github.com/anarayanan86/MITx-6.00.2x
