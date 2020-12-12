@@ -7,6 +7,10 @@ solutions2/
 **.pdf
 
 
+.gif
+*.gif
+**.gif
+
 mitvenv/
 
 # Some Results
