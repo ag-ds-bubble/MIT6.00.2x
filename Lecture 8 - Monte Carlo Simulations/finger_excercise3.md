@@ -9,8 +9,8 @@
 ### Q1) What constant can you estimate using the following picture?
 <img src='img1.png'>
 
-> 
+> pi/2
 
 ### Q2) Download the code used in the lecture "Finding Pi". If we now want to estimate the constant from the picture above, what should the number '4' in the line: return 4*(inCircle/float(numNeedles)) be changed to?
 
-> 
+> 2
