@@ -8,58 +8,39 @@
 
 <img src = 'img1.png'>
 
-- [x] Linear                   - [ ] Linear                  - [ ] Linear
-- [ ] Polynomial of degree 2   - [x] Polynomial of degree 2  - [ ] Polynomial of degree 2
-- [ ] Polynomial of degree 5   - [ ] Polynomial of degree 5  - [x] Polynomial of degree 5
+### Fit 1
+- [x] Linear
+- [ ] Polynomial of degree 2
+- [ ] Polynomial of degree 5
+
+
+### Fit 2
+- [ ] Linear
+- [x] Polynomial of degree 2
+- [ ] Polynomial of degree 5
+
+
+### Fit 3
+- [ ] Linear
+- [ ] Polynomial of degree 2
+- [x] Polynomial of degree 5
 
 
 
 
-<!-- linear
-Fit 1
+### Is each fit an example of overfitting?
+
+<img src = 'img1.png'>
+
+### Fit 1
+- [x] Yes
+- [ ] No
+
+### Fit 2
+- [x] Yes
+- [ ] No
 
 
-Linear
-
-
-correct
-smooth polynomial
-Fit 2
-
-
-Linear
-Polynomial of degree 2
-Polynomial of degree 5
-correct
-looks linear until x=6 then dips down then back up
-Fit 3
-
-
-Linear
-Polynomial of degree 2
-Polynomial of degree 5
-correct
-Is each fit an example of overfitting?
-
-linear
-Fit 1
-
-
-Yes
-No
-correct
-smooth polynomial
-Fit 2
-
-
-Yes
-No
-correct
-looks linear until x=6 then dips down then back up
-Fit 3
-
-
-Yes
-No
-correct
-Show answer -->
+### Fit 3
+- [ ] Yes
+- [x] No
